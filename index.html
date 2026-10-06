@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Samuel Rigolier — Reportages audiovisuels</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#eceff2;--surface:#fff;--ink:#0d1520;--muted:#58626f;--line:#cdd3da;--signal:#ffb400;--on-signal:#0d1520;--blue:#1f4fd8;
+--display:"Bricolage Grotesque","Arial Narrow",Arial,sans-serif;--text:"Newsreader",Georgia,"Times New Roman",serif;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0a0f16;--surface:#131a24;--ink:#eef1f5;--muted:#9aa5b3;--line:#27313e;--blue:#7ea0ff}}
+:root[data-theme="dark"]{--bg:#0a0f16;--surface:#131a24;--ink:#eef1f5;--muted:#9aa5b3;--line:#27313e;--blue:#7ea0ff}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--text);font-size:1.1rem;line-height:1.6}
+.wrap{max-width:1200px;margin:0 auto;padding:0 clamp(18px,4vw,40px)}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+header{display:flex;justify-content:space-between;align-items:center;padding:22px 0;gap:16px}
+.brand{font-family:var(--display);font-weight:800;font-size:1.15rem;letter-spacing:-.02em;display:flex;align-items:center;gap:10px}
+.live{width:12px;height:12px;border-radius:50%;background:var(--signal);animation:pulse 2.4s ease-in-out 3}
+@keyframes pulse{50%{box-shadow:0 0 0 9px transparent;opacity:.5}}
+header span.role{font-size:.95rem;color:var(--muted);font-style:italic}
+.hero{padding:clamp(40px,9vw,110px) 0 clamp(40px,6vw,70px);display:grid;grid-template-columns:1fr minmax(0,340px);gap:48px;align-items:end;border-bottom:2px solid var(--ink)}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(3.4rem,13vw,10rem);line-height:.84;letter-spacing:-.05em;margin:0}
+h1 span{display:block}h1 span:nth-child(2){padding-left:.45em}h1 span:nth-child(3){padding-left:.9em}
+.hero p{margin:0;color:var(--muted);font-size:1.15rem}
+h2.section{font-family:var(--display);font-weight:800;font-size:clamp(1.8rem,3.4vw,2.6rem);line-height:1;letter-spacing:-.03em;margin:0 0 12px}
+.screen{aspect-ratio:16/9;background:#05080c;position:relative;display:grid;place-items:center;overflow:hidden}
+.screen video{width:100%;height:100%;object-fit:contain}
+.screen .msg{color:#cfd6df;text-align:center;font-family:var(--display);padding:20px}
+.screen .msg b{display:block;font-size:1.3rem;color:#fff}
+.bar{position:absolute;left:0;right:0;bottom:0;height:6px;background:var(--signal)}
+.filters{display:flex;gap:8px;flex-wrap:wrap;padding:48px 0 28px}
+.chip{font:600 .9rem var(--display);border:2px solid var(--ink);background:transparent;color:var(--ink);padding:9px 16px;border-radius:999px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.chip:hover{background:var(--signal);color:var(--on-signal);border-color:var(--signal)}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:36px 28px;padding-bottom:90px}
+.card{all:unset;box-sizing:border-box;cursor:pointer;display:block}
+.card:focus-visible{outline:3px solid var(--blue);outline-offset:4px}
+.item.big{grid-column:1/-1}
+.frame{aspect-ratio:16/9;position:relative;overflow:hidden;background:linear-gradient(135deg,hsl(var(--h) 45% 32%),hsl(calc(var(--h) + 40) 50% 14%))}
+.big .frame{aspect-ratio:21/9}
+.frame:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(255,255,255,.04) 0 2px,transparent 2px 5px)}
+.play{position:absolute;right:16px;top:16px;width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.14);backdrop-filter:blur(6px);display:grid;place-items:center;color:#fff;transition:background .2s,color .2s}
+.card:hover .play{background:var(--signal);color:var(--on-signal)}
+.chyron{position:absolute;left:0;bottom:18px;background:var(--signal);color:var(--on-signal);font:800 .85rem var(--display);padding:6px 14px 6px 16px}
+.info{padding-top:14px}
+.info time{font:500 .85rem var(--display);color:var(--muted)}
+.info h3{font-family:var(--display);font-weight:800;font-size:clamp(1.35rem,2.4vw,1.8rem);line-height:1.08;letter-spacing:-.025em;margin:4px 0 8px}
+.big h3{font-size:clamp(1.8rem,3.4vw,2.6rem)}
+.info p{margin:0;color:var(--muted);max-width:62ch}
+footer{border-top:2px solid var(--ink);padding:26px 0 40px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:.95rem;color:var(--muted)}
+dialog{border:0;padding:0;background:transparent;max-width:min(780px,calc(100% - 28px));width:100%;color:var(--ink)}
+dialog::backdrop{background:rgba(5,8,12,.72)}
+dialog[open]{animation:in .25s ease-out}
+@keyframes in{from{transform:translateY(14px);opacity:0}}
+.panel{background:var(--surface);position:relative}
+.panel .info{padding:24px 28px 30px}
+.panel video{width:100%;aspect-ratio:16/9;background:#000;display:block}
+.close{position:absolute;right:12px;top:12px;z-index:2;width:42px;height:42px;border-radius:50%;border:0;background:var(--signal);color:var(--on-signal);font-size:1.4rem;cursor:pointer}
+@media(max-width:760px){.hero,.feature{grid-template-columns:1fr;gap:24px}header span.role{display:none}.grid{grid-template-columns:1fr}.big .frame{aspect-ratio:16/9}h1 span:nth-child(n){padding-left:0}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+[hidden]{display:none!important}
+.feature{padding:36px 0;border-bottom:1px solid var(--line)}
+.hint{color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<div class="brand"><i class="live"></i>Samuel Rigolier</div>
+<span class="role">Reportages, documentaires, journalisme</span>
+</header>
+
+<section class="hero">
+<h1><span>Voir.</span><span>Écouter.</span><span>Raconter.</span></h1>
+<p>Reportages, magazines, chroniques et plateaux réalisés sur le terrain. Des images, des sons et des voix pour raconter l’actualité autrement.</p>
+</section>
+
+<section class="feature" id="feature" hidden>
+<div class="screen" id="screen"></div>
+</section>
+
+<nav class="filters" id="filters" aria-label="Filtrer par format"></nav>
+<main class="grid" id="grid"></main>
+
+<footer><span>© Samuel Rigolier</span><span>Sélection de travaux, 2026</span></footer>
+</div>
+
+<dialog id="dlg" aria-label="Détail du reportage">
+<div class="panel">
+<button class="close" aria-label="Fermer" id="close">×</button>
+<div id="dlgBody"></div>
+</div>
+</dialog>
+
+<script src="reportages.js"></script>
+<script>
+const $=s=>document.querySelector(s),esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const hue=c=>[...c].reduce((a,ch)=>(a*31+ch.charCodeAt(0))%360,7);
+const items=window.REPORTAGES||[],featured=window.VIDEO_A_LA_UNE||"";
+let active="Tous";
+if(featured){$("#feature").hidden=false;$("#screen").innerHTML=`<video controls playsinline preload="metadata" src="${esc(encodeURI(featured))}"></video>`}
+function render(){
+ if(active!=="Tous"&&!items.some(i=>i.cat===active))active="Tous";
+ const cats=["Tous",...new Set(items.map(i=>i.cat))];
+ $("#filters").innerHTML=cats.map(c=>`<button class="chip" aria-pressed="${c===active}" data-c="${esc(c)}">${esc(c)}</button>`).join("");
+ const list=items.map((x,i)=>({...x,i})).filter(x=>active==="Tous"||x.cat===active);
+ $("#grid").innerHTML=list.length?list.map((x,k)=>`<div class="item${k===0&&active==="Tous"?" big":""}">
+ <button class="card" data-i="${x.i}"><div class="frame" style="--h:${hue(x.cat)}"><span class="play" aria-hidden="true">▶</span><span class="chyron">${esc(x.cat)}</span></div>
+ <div class="info"><time>${esc(x.date)}</time><h3>${esc(x.title)}</h3><p>${esc(x.text)}</p></div></button></div>`).join(""):`<p class="hint">Aucun reportage pour l’instant.</p>`;
+}
+$("#filters").addEventListener("click",e=>{const b=e.target.closest(".chip");if(b){active=b.dataset.c;render()}});
+$("#grid").addEventListener("click",e=>{
+ const c=e.target.closest(".card");if(!c)return;const x=items[c.dataset.i];
+ $("#dlgBody").innerHTML=(x.video?`<video controls playsinline src="${esc(encodeURI(x.video))}"></video>`:`<div class="frame" style="--h:${hue(x.cat)}"><span class="chyron">${esc(x.cat)}</span></div>`)
+  +`<div class="info"><time>${esc(x.date)}</time><h3>${esc(x.title)}</h3><p>${esc(x.text)}</p>${x.video?"":"<p><em>La vidéo de ce reportage sera bientôt disponible.</em></p>"}</div>`;
+ $("#dlg").showModal();
+});
+$("#close").onclick=()=>$("#dlg").close();
+$("#dlg").addEventListener("click",e=>{if(e.target===$("#dlg"))$("#dlg").close()});
+$("#dlg").addEventListener("close",()=>{$("#dlgBody").innerHTML=""});
+render();
+</script>
+</body>
+</html>
