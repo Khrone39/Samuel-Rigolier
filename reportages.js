@@ -8,16 +8,13 @@
    Laisse  video: ""  s'il n'y a pas encore de vidéo.
    ============================================================ */
 
-// Vidéo affichée tout en haut de la page ("" = aucune)
-window.VIDEO_A_LA_UNE = "";
-
 window.REPORTAGES = [
   { cat: "Actualité", title: "Les nouvelle formes de consommation du vin.mp4", date: "2026",
     text: "Reportage pour la partie nationale du JT de France 3, dans le cadre d'une édition spéciale sur le vin.", video: "videos/Conso__Vin.mp4", image: "images/TV.jpg" },
   { cat: "Actualité", title: "Le mystère de la Madeleine de Proust enfin révélé.mp4", date: "2025",
     text: "Rencontres et témoignages autour d’une actualité locale, avec un traitement qui privilégie la parole des personnes concernées.", video: "videos/MDP.mp4" },
   { cat: "Chroniques & plateaux", title: "Au coeur du langage", date: "2026",
-    text: "Un format magazine à hauteur de celles et ceux qui font vivre les coulisses d’un territoire.", video: "videos/ACDL.mp4", image: "" },
+    text: "Un format magazine à hauteur de celles et ceux qui font vivre les coulisses d’un territoire.", video: "videos/ACDL.mp4" },
   { cat: "Magazines", title: "Portrait : une passion en héritage", date: "2024",
     text: "Portrait audiovisuel construit autour d’archives, de gestes et d’une interview au long cours.", video: "" },
     { cat: "Chroniques & plateaux", title: "Chronique : le regard de la semaine", date: "2026",
