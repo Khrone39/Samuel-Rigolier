@@ -39,7 +39,6 @@ h2.section{font-family:var(--display);font-weight:800;font-size:clamp(1.8rem,3.4
 .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:36px 28px;padding-bottom:90px}
 .card{all:unset;box-sizing:border-box;cursor:pointer;display:block}
 .card:focus-visible{outline:3px solid var(--blue);outline-offset:4px}
-.item.big{grid-column:1/-1}
 .frame{
   width:100%;
   aspect-ratio:16/9;
@@ -51,17 +50,6 @@ h2.section{font-family:var(--display);font-weight:800;font-size:clamp(1.8rem,3.4
     hsl(calc(var(--h) + 40) 50% 14%)
   );
 }
-.big .frame{
-  width:100%;
-  aspect-ratio:16/9;
-}
-.big .info{
-  width:100%;
-}
-.big .info p{
-  max-width:none;
-  width:100%;
-}
 .frame:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(255,255,255,.04) 0 2px,transparent 2px 5px)}
 .play{position:absolute;right:16px;top:16px;width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.14);backdrop-filter:blur(6px);display:grid;place-items:center;color:#fff;transition:background .2s,color .2s}
 .card:hover .play{background:var(--signal);color:var(--on-signal)}
@@ -69,7 +57,6 @@ h2.section{font-family:var(--display);font-weight:800;font-size:clamp(1.8rem,3.4
 .info{padding-top:14px}
 .info time{font:500 .85rem var(--display);color:var(--muted)}
 .info h3{font-family:var(--display);font-weight:800;font-size:clamp(1.35rem,2.4vw,1.8rem);line-height:1.08;letter-spacing:-.025em;margin:4px 0 8px}
-.big h3{font-size:clamp(1.8rem,3.4vw,2.6rem)}
 .info p{margin:0;color:var(--muted);max-width:62ch}
 footer{border-top:2px solid var(--ink);padding:26px 0 40px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:.95rem;color:var(--muted)}
 dialog{border:0;padding:0;background:transparent;max-width:min(780px,calc(100% - 28px));width:100%;color:var(--ink)}
