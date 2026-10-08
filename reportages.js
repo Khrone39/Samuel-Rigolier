@@ -14,7 +14,7 @@ window.VIDEO_A_LA_UNE = "";
 window.REPORTAGES = [
   { cat: "Actualité", title: "videos/Conso_Vin.mp4", date: "2026",
     text: "Reportage pour la partie nationale du JT de France 3, dans le cadre d'une édition spéciale sur le vin.", video: "videos/Conso_vin.mp4" },
-  { cat: "Actualité", title: "videos/Madeleine De Proust Tr.mp4", date: "2025",
+  { cat: "Actualité", title: "videos/MDP.mp4", date: "2025",
     text: "Rencontres et témoignages autour d’une actualité locale, avec un traitement qui privilégie la parole des personnes concernées.", video: "" },
   { cat: "Magazines", title: "Les métiers que l’on ne voit pas", date: "2025",
     text: "Un format magazine à hauteur de celles et ceux qui font vivre les coulisses d’un territoire.", video: "" },
