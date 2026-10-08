@@ -36,28 +36,12 @@ h2.section{font-family:var(--display);font-weight:800;font-size:clamp(1.8rem,3.4
 .chip{font:600 .9rem var(--display);border:2px solid var(--ink);background:transparent;color:var(--ink);padding:9px 16px;border-radius:999px;cursor:pointer}
 .chip[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
 .chip:hover{background:var(--signal);color:var(--on-signal);border-color:var(--signal)}
-.grid{
-  display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:36px 28px;
-  padding-bottom:90px;
-}
-.card{
-  all:unset;
-  box-sizing:border-box;
-  cursor:pointer;
-  display:block;
-}
-.card:focus-visible{
-  outline:3px solid var(--blue);
-  outline-offset:4px;
-}
-/* Premier reportage : pleine largeur */
-.item.big{
-  grid-column:1/-1;
-  width:100%;
-}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:36px 28px;padding-bottom:90px}
+.card{all:unset;box-sizing:border-box;cursor:pointer;display:block}
+.card:focus-visible{outline:3px solid var(--blue);outline-offset:4px}
+.item.big{grid-column:1/-1}
 .frame{
+  width:100%;
   aspect-ratio:16/9;
   position:relative;
   overflow:hidden;
@@ -67,12 +51,10 @@ h2.section{font-family:var(--display);font-weight:800;font-size:clamp(1.8rem,3.4
     hsl(calc(var(--h) + 40) 50% 14%)
   );
 }
-/* Grande vidéo du premier reportage */
 .big .frame{
   width:100%;
-  aspect-ratio:21/9;
+  aspect-ratio:16/9;
 }
-/* Description du premier reportage sur toute la largeur */
 .big .info{
   width:100%;
 }
