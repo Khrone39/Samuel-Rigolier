@@ -63,7 +63,20 @@ dialog[open]{animation:in .25s ease-out}
 @media(max-width:760px){.hero,.feature{grid-template-columns:1fr;gap:24px}header span.role{display:none}.grid{grid-template-columns:1fr}.big .frame{aspect-ratio:16/9}h1 span:nth-child(n){padding-left:0}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 [hidden]{display:none!important}
-.feature{padding:36px 0;border-bottom:1px solid var(--line)}
+.feature{
+  width:100%;
+  padding:36px 0;
+  border-bottom:1px solid var(--line);
+}
+.feature .screen{
+  width:100%;
+}
+.feature .screen video{
+  width:100%;
+  height:auto;
+  aspect-ratio:16/9;
+  object-fit:cover;
+}
 .hint{color:var(--muted)}
 </style>
 </head>
