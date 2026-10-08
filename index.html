@@ -67,7 +67,7 @@ dialog[open]{animation:in .25s ease-out}
 .panel .info{padding:24px 28px 30px}
 .panel video{width:100%;aspect-ratio:16/9;background:#000;display:block}
 .close{position:absolute;right:12px;top:12px;z-index:2;width:42px;height:42px;border-radius:50%;border:0;background:var(--signal);color:var(--on-signal);font-size:1.4rem;cursor:pointer}
-@media(max-width:760px){.hero,.feature{grid-template-columns:1fr;gap:24px}header span.role{display:none}.grid{grid-template-columns:1fr}.big .frame{aspect-ratio:16/9}h1 span:nth-child(n){padding-left:0}}
+@media(max-width:760px){.hero,.feature{grid-template-columns:1fr;gap:24px}header span.role{display:none}.grid{grid-template-columns:1fr}h1 span:nth-child(n){padding-left:0}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 [hidden]{display:none!important}
 .feature{
@@ -128,7 +128,7 @@ function render(){
  const cats=["Tous",...new Set(items.map(i=>i.cat))];
  $("#filters").innerHTML=cats.map(c=>`<button class="chip" aria-pressed="${c===active}" data-c="${esc(c)}">${esc(c)}</button>`).join("");
  const list=items.map((x,i)=>({...x,i})).filter(x=>active==="Tous"||x.cat===active);
- $("#grid").innerHTML=list.length?list.map((x,k)=>`<div class="item${k===0&&active==="Tous"?" big":""}">
+ $("#grid").innerHTML=list.length?list.map((x,k)=>`<div class="item">
  <button class="card" data-i="${x.i}"><div class="frame" style="--h:${hue(x.cat)}${bg(x)}"><span class="play" aria-hidden="true">▶</span><span class="chyron">${esc(x.cat)}</span></div>
  <div class="info"><time>${esc(x.date)}</time><h3>${esc(x.title)}</h3><p>${esc(x.text)}</p></div></button></div>`).join(""):`<p class="hint">Aucun reportage pour l’instant.</p>`;
 }
