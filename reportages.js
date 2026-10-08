@@ -23,7 +23,7 @@ window.REPORTAGES = [
     { cat: "Chroniques & plateaux", title: "Chronique : le regard de la semaine", date: "2026",
     text: "Une chronique courte, incarnée et rythmée, pensée pour ouvrir le débat et donner envie d’écouter.", video: "" },
   { cat: "Chroniques & plateaux", title: "Plateau : débat et décryptage", date: "2025",
-    text: "Animation d’un échange en direct avec plusieurs intervenants : relances, contexte et synthèse.", video: "" }
+    text: "Animation d’un échange en direct avec plusieurs intervenants : relances, contexte et synthèse.", video: "" },
   { cat: "École", title: "Dans les coulisses d’une rédaction", date: "2024",
     text: "Immersion dans une journée d’école et découverte des étapes qui transforment une idée en sujet.", video: "" },
   { cat: "École", title: "Apprendre à raconter en images", date: "2023",
