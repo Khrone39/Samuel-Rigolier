@@ -12,7 +12,7 @@
 window.VIDEO_A_LA_UNE = "";
 
 window.REPORTAGES = [
-  { cat: "Actualité", title: "Les nouvelles formes de consommation du vin.mp4", date: "2026",
+  { cat: "Actualité", title: "Les nouvelle formes de consommation du vin.mp4", date: "2026",
     text: "Reportage pour la partie nationale du JT de France 3, dans le cadre d'une édition spéciale sur le vin.", video: "videos/Conso_Vin.mp4" },
   { cat: "Actualité", title: "Le mystère de la Madeleine de Proust enfin révélé.mp4", date: "2025",
     text: "Rencontres et témoignages autour d’une actualité locale, avec un traitement qui privilégie la parole des personnes concernées.", video: "videos/MDP.mp4" },
