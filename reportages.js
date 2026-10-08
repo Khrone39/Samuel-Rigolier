@@ -12,8 +12,8 @@
 window.VIDEO_A_LA_UNE = "";
 
 window.REPORTAGES = [
-  { cat: "Actualité", title: "Au cœur de la ville, une journée en mouvement", date: "2026",
-    text: "Reportage de terrain mêlant interviews, ambiance sonore et séquences d’observation pour comprendre un événement au plus près.", video: "" },
+  { cat: "Actualité", title: "Nouvelles formes de consommation du vin", date: "2026",
+    text: "Reportage pour la partie nationale du JT de France 3, dans le cadre d'une édition spéciale sur le vin.", video: "videos/Conso_vin.mp4" },
   { cat: "Actualité", title: "Quand le terrain devient le sujet", date: "2025",
     text: "Rencontres et témoignages autour d’une actualité locale, avec un traitement qui privilégie la parole des personnes concernées.", video: "" },
   { cat: "Magazines", title: "Les métiers que l’on ne voit pas", date: "2025",
