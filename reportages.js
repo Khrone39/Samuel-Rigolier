@@ -9,9 +9,9 @@
    ============================================================ */
 
 window.REPORTAGES = [
-  { cat: "Actualité", title: "Les nouvelle formes de consommation du vin.mp4", date: "2026",
+  { cat: "Actualité", title: "Les nouvelle formes de consommation du vin", date: "2026",
     text: "Reportage pour la partie nationale du JT de France 3, dans le cadre d'une édition spéciale sur le vin.", video: "videos/Conso__Vin.mp4", image: "images/TV.jpg" },
-  { cat: "Actualité", title: "Le mystère de la Madeleine de Proust enfin révélé.mp4", date: "2025",
+  { cat: "Actualité", title: "Le mystère de la Madeleine de Proust enfin percé", date: "2025",
     text: "Rencontres et témoignages autour d’une actualité locale, avec un traitement qui privilégie la parole des personnes concernées.", video: "videos/MDP.mp4" },
   { cat: "Chroniques & plateaux", title: "Au coeur du langage", date: "2026",
     text: "Un format magazine à hauteur de celles et ceux qui font vivre les coulisses d’un territoire.", video: "videos/ACDL.mp4" },
