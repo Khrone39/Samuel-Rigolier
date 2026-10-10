@@ -23,6 +23,6 @@ window.REPORTAGES = [
     text: "Animation d’un échange en direct avec plusieurs intervenants : relances, contexte et synthèse.", video: "" },
   { cat: "École", title: "Dans les coulisses d’une rédaction", date: "2024",
     text: "Immersion dans une journée d’école et découverte des étapes qui transforment une idée en sujet.", video: "" },
-  { cat: "École", title: "Apprendre à raconter en images", date: "2023",
-    text: "Retour d’expérience sur un projet collectif mêlant prise de son, tournage, montage et écriture.", video: "" },
+  { cat: "Actualité", title: "Port du casque obligatoire pour les trotinettes à Villeurbanne", date: "2026",
+    text: "Retour d’expérience sur un projet collectif mêlant prise de son, tournage, montage et écriture.", video: "videos/Villeurbanne_trottinnettes.mp4" },
 ];
