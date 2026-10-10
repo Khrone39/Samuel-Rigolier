@@ -18,7 +18,7 @@ window.REPORTAGES = [
   { cat: "Actualité", title: "Café du nord", date: "2024",
     text: "Reportage sur la reprise d'un bistrot de village, lors de mon stage à Dijon.", video: "videos/Café.mp4" },
     { cat: "Magazine", title: "Une nouvelle thérapie pour la paralysie cérébrale", date: "2026",
-    text: "Long format sur une expérimentation qui se révèle être un véritable espoir face à ce handicap.", video: "videos/Paralysie_cerebrale.mp4" },
+    text: "Long format sur une expérimentation qui se révèle être un véritable espoir face à ce handicap.", video: "videos/Paralysie.mp4" },
   { cat: "Actualité", title: "J'ai testé pour vous : la tyrolienne la plus pentue de France", date: "2026",
     text: "Tout est dans le titre.", video: "videos/Tyrolienne.mp4" },
   { cat: "École", title: "Dérives sectaires", date: "2026",
