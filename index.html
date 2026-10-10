@@ -35,6 +35,7 @@ h2.section{font-family:var(--display);font-weight:800;font-size:clamp(1.8rem,3.4
 .filters{display:flex;gap:8px;flex-wrap:wrap;padding:48px 0 28px}
 .chip{font:600 .9rem var(--display);border:2px solid var(--ink);background:transparent;color:var(--ink);padding:9px 16px;border-radius:999px;cursor:pointer}
 .chip[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.bar2{display:flex;justify-content:space-between;align-items:center;gap:8px 16px;flex-wrap:wrap}.bar2 .filters{padding-right:0}.bar2 #snd{margin:48px 0 28px}
 .chip:hover{background:var(--signal);color:var(--on-signal);border-color:var(--signal)}
 .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:36px 28px;padding-bottom:90px}
 .card{all:unset;box-sizing:border-box;cursor:pointer;display:block;width:100%;min-width:0;text-align:left}
@@ -87,7 +88,7 @@ dialog[open]{animation:in .25s ease-out}
 <div class="screen" id="screen"></div>
 </section>
 
-<nav class="filters" id="filters" aria-label="Filtrer par format"></nav>
+<div class="bar2"><nav class="filters" id="filters" aria-label="Filtrer par format"></nav><button class="chip" id="snd" aria-pressed="false">🔇 Activer le son des aperçus</button></div>
 <main class="grid" id="grid"></main>
 
 <footer><span>© Samuel Rigolier</span><span>Sélection de travaux, 2026</span></footer>
@@ -105,8 +106,8 @@ dialog[open]{animation:in .25s ease-out}
 const $=s=>document.querySelector(s),esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const PAL=[["#e8a800","#0d1520"],["#c9500f","#fff"],["#c4261d","#fff"],["#c99a10","#0d1520"],["#b8431f","#fff"],["#9a1b16","#fff"]];
 const items=window.REPORTAGES||[],featured=window.VIDEO_A_LA_UNE||"";
-let active="Tous";
-const col=c=>{const p=PAL[[...new Set(items.map(i=>i.cat))].indexOf(c)%PAL.length];return `${p[0]};--f:${p[1]}`};
+let active="Tous",sound=false;
+const col=i=>{const p=PAL[i%PAL.length];return `${p[0]};--f:${p[1]}`};
 if(featured){$("#feature").hidden=false;$("#screen").innerHTML=`<video controls playsinline preload="metadata" src="${esc(encodeURI(featured))}"></video>`}
 function render(){
  if(active!=="Tous"&&!items.some(i=>i.cat===active))active="Tous";
@@ -114,11 +115,11 @@ function render(){
  $("#filters").innerHTML=cats.map(c=>`<button class="chip" aria-pressed="${c===active}" data-c="${esc(c)}">${esc(c)}</button>`).join("");
  const list=items.map((x,i)=>({...x,i})).filter(x=>active==="Tous"||x.cat===active);
  $("#grid").innerHTML=list.length?list.map(x=>`<div class="item">
- <button class="card" data-i="${x.i}"><div class="frame" style="--c:${col(x.cat)}">${x.video?`<video loop playsinline preload="metadata" src="${esc(encodeURI(x.video))}"></video>`:""}<span class="play" aria-hidden="true">▶</span><span class="chyron">${esc(x.cat)}</span><span class="ftitle">${esc(x.title)}</span></div>
+ <button class="card" data-i="${x.i}"><div class="frame" style="--c:${col(x.i)}">${x.video?`<video loop playsinline preload="metadata" src="${esc(encodeURI(x.video))}"></video>`:""}<span class="play" aria-hidden="true">▶</span><span class="chyron">${esc(x.cat)}</span><span class="ftitle">${esc(x.title)}</span></div>
  <div class="info"><time>${esc(x.date)}</time><p>${esc(x.text)}</p></div></button></div>`).join(""):`<p class="hint">Aucun reportage pour l’instant.</p>`;
  document.querySelectorAll("#grid .card").forEach(c=>{
   const v=c.querySelector("video");if(!v)return;
-  const go=()=>{c.classList.add("playing");v.muted=false;v.volume=1;v.play().catch(()=>{v.muted=true;v.play().catch(()=>{})})},stop=()=>{c.classList.remove("playing");v.pause();v.currentTime=0};
+  const go=()=>{c.classList.add("playing");v.muted=!sound;v.volume=1;v.play().catch(()=>{v.muted=true;v.play().catch(()=>{})})},stop=()=>{c.classList.remove("playing");v.pause();v.currentTime=0};
   c.addEventListener("mouseenter",go);c.addEventListener("mouseleave",stop);c.addEventListener("focus",go);c.addEventListener("blur",stop);
  });
 }
@@ -126,10 +127,11 @@ $("#filters").addEventListener("click",e=>{const b=e.target.closest(".chip");if(
 $("#grid").addEventListener("click",e=>{
  const c=e.target.closest(".card");if(!c)return;const x=items[c.dataset.i];
  document.querySelectorAll("#grid video").forEach(v=>v.pause());
- $("#dlgBody").innerHTML=(x.video?`<video controls playsinline ${x.image?`poster="${esc(encodeURI(x.image))}"`:""} src="${esc(encodeURI(x.video))}"></video>`:`<div class="frame" style="--c:${col(x.cat)};aspect-ratio:16/9"><span class="chyron">${esc(x.cat)}</span></div>`)
+ $("#dlgBody").innerHTML=(x.video?`<video controls playsinline ${x.image?`poster="${esc(encodeURI(x.image))}"`:""} src="${esc(encodeURI(x.video))}"></video>`:`<div class="frame" style="--c:${col(x.i)};aspect-ratio:16/9"><span class="chyron">${esc(x.cat)}</span></div>`)
   +`<div class="info"><time>${esc(x.date)}</time><h3>${esc(x.title)}</h3><p>${esc(x.text)}</p>${x.video?"":"<p><em>La vidéo de ce reportage sera bientôt disponible.</em></p>"}</div>`;
  $("#dlg").showModal();
 });
+$("#snd").onclick=e=>{sound=!sound;const b=e.currentTarget;b.setAttribute("aria-pressed",sound);b.textContent=sound?"🔊 Son des aperçus activé":"🔇 Activer le son des aperçus"};
 $("#close").onclick=()=>$("#dlg").close();
 $("#dlg").addEventListener("click",e=>{if(e.target===$("#dlg"))$("#dlg").close()});
 $("#dlg").addEventListener("close",()=>{$("#dlgBody").innerHTML=""});
