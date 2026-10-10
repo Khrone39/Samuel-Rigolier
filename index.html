@@ -127,9 +127,10 @@ $("#filters").addEventListener("click",e=>{const b=e.target.closest(".chip");if(
 $("#grid").addEventListener("click",e=>{
  const c=e.target.closest(".card");if(!c)return;const x=items[c.dataset.i];
  document.querySelectorAll("#grid video").forEach(v=>v.pause());
- $("#dlgBody").innerHTML=(x.video?`<video controls playsinline ${x.image?`poster="${esc(encodeURI(x.image))}"`:""} src="${esc(encodeURI(x.video))}"></video>`:`<div class="frame" style="--c:${col(x.i)};aspect-ratio:16/9"><span class="chyron">${esc(x.cat)}</span></div>`)
+ $("#dlgBody").innerHTML=(x.video?`<video controls autoplay playsinline ${x.image?`poster="${esc(encodeURI(x.image))}"`:""} src="${esc(encodeURI(x.video))}"></video>`:`<div class="frame" style="--c:${col(x.i)};aspect-ratio:16/9"><span class="chyron">${esc(x.cat)}</span></div>`)
   +`<div class="info"><time>${esc(x.date)}</time><h3>${esc(x.title)}</h3><p>${esc(x.text)}</p>${x.video?"":"<p><em>La vidéo de ce reportage sera bientôt disponible.</em></p>"}</div>`;
  $("#dlg").showModal();
+ const dv=$("#dlgBody video");if(dv){dv.muted=false;dv.play().catch(()=>{dv.muted=true;dv.play().catch(()=>{})})}
 });
 $("#snd").onclick=e=>{sound=!sound;const b=e.currentTarget;b.setAttribute("aria-pressed",sound);b.textContent=sound?"🔊 Son des aperçus activé":"🔇 Activer le son des aperçus"};
 $("#close").onclick=()=>$("#dlg").close();
