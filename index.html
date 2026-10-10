@@ -39,15 +39,17 @@ h2.section{font-family:var(--display);font-weight:800;font-size:clamp(1.8rem,3.4
 .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:36px 28px;padding-bottom:90px}
 .card{all:unset;box-sizing:border-box;cursor:pointer;display:block}
 .card:focus-visible{outline:3px solid var(--blue);outline-offset:4px}
-.frame{width:100%;aspect-ratio:16/9;position:relative;overflow:hidden;background:#1c2531}
-.frame:before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(255,255,255,.04) 0 2px,transparent 2px 5px)}
+.frame{width:100%;aspect-ratio:16/9;position:relative;overflow:hidden;background:var(--c,#dfe6ee);color:var(--f,#0d1520);transition:color .3s}
+.frame:before{content:"";position:absolute;width:62%;aspect-ratio:1;border-radius:50%;right:-14%;top:-34%;background:rgba(255,255,255,.3);transition:transform .6s}
+.card:hover .frame:before{transform:scale(1.12)}
 .frame video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .35s}
 .card.playing .frame video{opacity:1}
-.frame:after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(0deg,rgba(8,12,18,.88),rgba(8,12,18,.1) 65%)}
-.play{position:absolute;z-index:2;right:16px;top:16px;width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.14);backdrop-filter:blur(6px);display:grid;place-items:center;color:#fff;transition:background .2s,color .2s}
-.card:hover .play{background:var(--signal);color:var(--on-signal)}
-.chyron{position:absolute;z-index:2;left:0;top:18px;background:var(--signal);color:var(--on-signal);font:800 .85rem var(--display);padding:6px 14px 6px 16px}
-.ftitle{position:absolute;left:20px;right:20px;bottom:18px;z-index:2;color:#fff;font:800 clamp(1.35rem,2.7vw,2rem)/1.05 var(--display);letter-spacing:-.025em;text-shadow:0 1px 10px rgba(0,0,0,.5)}
+.frame:after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(0deg,rgba(8,12,18,.82),rgba(8,12,18,.05) 65%);opacity:0;transition:opacity .35s}
+.card.playing .frame{color:#fff}.card.playing .frame:after{opacity:1}
+.play{position:absolute;z-index:2;right:20px;top:18px;width:38px;height:38px;border-radius:50%;border:1.5px solid currentColor;display:grid;place-items:center;font-size:.7rem;padding-left:2px;transition:background .2s,color .2s}
+.card:hover .play{background:#0d1520;border-color:#0d1520;color:#fff}
+.chyron{position:absolute;z-index:2;left:22px;top:24px;font:700 .72rem var(--display);letter-spacing:.14em;text-transform:uppercase}
+.ftitle{position:absolute;left:22px;right:22px;bottom:20px;z-index:2;font:800 clamp(1.4rem,2.8vw,2.1rem)/1.04 var(--display);letter-spacing:-.03em}
 .info{padding-top:12px}
 .info time{font:500 .85rem var(--display);color:var(--muted)}
 .info h3{font-family:var(--display);font-weight:800;font-size:clamp(1.35rem,2.4vw,1.8rem);line-height:1.08;letter-spacing:-.025em;margin:4px 0 8px}
@@ -101,8 +103,10 @@ dialog[open]{animation:in .25s ease-out}
 <script src="reportages.js"></script>
 <script>
 const $=s=>document.querySelector(s),esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const PAL=[["#e8a800","#0d1520"],["#c9500f","#fff"],["#c4261d","#fff"],["#c99a10","#0d1520"],["#b8431f","#fff"],["#9a1b16","#fff"]];
 const items=window.REPORTAGES||[],featured=window.VIDEO_A_LA_UNE||"";
 let active="Tous";
+const col=c=>{const p=PAL[[...new Set(items.map(i=>i.cat))].indexOf(c)%PAL.length];return `${p[0]};--f:${p[1]}`};
 if(featured){$("#feature").hidden=false;$("#screen").innerHTML=`<video controls playsinline preload="metadata" src="${esc(encodeURI(featured))}"></video>`}
 function render(){
  if(active!=="Tous"&&!items.some(i=>i.cat===active))active="Tous";
@@ -110,11 +114,11 @@ function render(){
  $("#filters").innerHTML=cats.map(c=>`<button class="chip" aria-pressed="${c===active}" data-c="${esc(c)}">${esc(c)}</button>`).join("");
  const list=items.map((x,i)=>({...x,i})).filter(x=>active==="Tous"||x.cat===active);
  $("#grid").innerHTML=list.length?list.map(x=>`<div class="item">
- <button class="card" data-i="${x.i}"><div class="frame">${x.video?`<video muted loop playsinline preload="metadata" src="${esc(encodeURI(x.video))}"></video>`:""}<span class="play" aria-hidden="true">▶</span><span class="chyron">${esc(x.cat)}</span><span class="ftitle">${esc(x.title)}</span></div>
+ <button class="card" data-i="${x.i}"><div class="frame" style="--c:${col(x.cat)}">${x.video?`<video loop playsinline preload="metadata" src="${esc(encodeURI(x.video))}"></video>`:""}<span class="play" aria-hidden="true">▶</span><span class="chyron">${esc(x.cat)}</span><span class="ftitle">${esc(x.title)}</span></div>
  <div class="info"><time>${esc(x.date)}</time><p>${esc(x.text)}</p></div></button></div>`).join(""):`<p class="hint">Aucun reportage pour l’instant.</p>`;
  document.querySelectorAll("#grid .card").forEach(c=>{
   const v=c.querySelector("video");if(!v)return;
-  const go=()=>{c.classList.add("playing");v.play().catch(()=>{})},stop=()=>{c.classList.remove("playing");v.pause();v.currentTime=0};
+  const go=()=>{c.classList.add("playing");v.muted=false;v.volume=1;v.play().catch(()=>{v.muted=true;v.play().catch(()=>{})})},stop=()=>{c.classList.remove("playing");v.pause();v.currentTime=0};
   c.addEventListener("mouseenter",go);c.addEventListener("mouseleave",stop);c.addEventListener("focus",go);c.addEventListener("blur",stop);
  });
 }
@@ -122,7 +126,7 @@ $("#filters").addEventListener("click",e=>{const b=e.target.closest(".chip");if(
 $("#grid").addEventListener("click",e=>{
  const c=e.target.closest(".card");if(!c)return;const x=items[c.dataset.i];
  document.querySelectorAll("#grid video").forEach(v=>v.pause());
- $("#dlgBody").innerHTML=(x.video?`<video controls playsinline ${x.image?`poster="${esc(encodeURI(x.image))}"`:""} src="${esc(encodeURI(x.video))}"></video>`:`<div class="frame"><span class="chyron">${esc(x.cat)}</span></div>`)
+ $("#dlgBody").innerHTML=(x.video?`<video controls playsinline ${x.image?`poster="${esc(encodeURI(x.image))}"`:""} src="${esc(encodeURI(x.video))}"></video>`:`<div class="frame" style="--c:${col(x.cat)};aspect-ratio:16/9"><span class="chyron">${esc(x.cat)}</span></div>`)
   +`<div class="info"><time>${esc(x.date)}</time><h3>${esc(x.title)}</h3><p>${esc(x.text)}</p>${x.video?"":"<p><em>La vidéo de ce reportage sera bientôt disponible.</em></p>"}</div>`;
  $("#dlg").showModal();
 });
