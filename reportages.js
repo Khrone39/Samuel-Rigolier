@@ -21,8 +21,8 @@ window.REPORTAGES = [
     text: "Long format sur une expérimentation qui se révèle être un véritable espoir face à ce handicap.", video: "videos/Paralysie_cerebrale.mp4" },
   { cat: "Actualité", title: "J'ai testé pour vous : la tyrolienne la plus pentue de France", date: "2026",
     text: "Tout est dans le titre.", video: "videos/Tyrolienne.mp4" },
-  { cat: "École", title: "Dans les coulisses d’une rédaction", date: "2024",
-    text: "Immersion dans une journée d’école et découverte des étapes qui transforment une idée en sujet.", video: "" },
+  { cat: "École", title: "Dérives sectaires", date: "2026",
+    text: "En février Auréalia A. est mise en examen, soupçonnée d'être une gourelle. Devant notre caméra, c'est la première fois qu'une de ses victimes accepte de témoigner à la télévision.", video: "videos/Sectes.mp4" },
   { cat: "Actualité", title: "Port du casque obligatoire pour les trotinettes à Villeurbanne", date: "2026",
     text: "Villeurbanne est devenue la première commune de la Métropole de Lyon à imposer le port du casque obligatoire à trotinette.", video: "videos/Villeurbanne_trottinnettes.mp4" },
 ];
