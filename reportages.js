@@ -24,6 +24,9 @@ window.REPORTAGES = [
    { cat: "Magazine", title: "Une nouvelle thérapie pour la paralysie cérébrale", date: "2026",
     text: "Long format sur une expérimentation qui se révèle être un véritable espoir face à ce handicap.", video: "videos/Paralysie.mp4" },
 
+   { cat: "Chroniques", title: "Elections dans les communautés de communes", date: "2026",
+    text: "Chronique politique pour France 3 Bourgogne.", video: "videos/Chronique.mp4" },
+   
    { cat: "Actualité", title: "J'ai testé pour vous : la tyrolienne la plus pentue de France", date: "2026",
     text: "Tout est dans le titre.", video: "videos/Tyrolienne.mp4" },
 
@@ -31,8 +34,5 @@ window.REPORTAGES = [
     text: "En février Auréalia A. est mise en examen, soupçonnée d'être une gourelle. Devant notre caméra, c'est la première fois qu'une de ses victimes accepte de témoigner à la télévision.", video: "videos/Sectes.mp4" },
 
    { cat: "Actualité", title: "Port du casque obligatoire pour les trotinettes à Villeurbanne", date: "2026",
-    text: "Villeurbanne est devenue la première commune de la Métropole de Lyon à imposer le port du casque obligatoire à trotinette.", video: "videos/Villeurbanne_trottinnettes.mp4" },
- 
-   { cat: "Chroniques", title: "Elections dans les communautés de communes", date: "2026",
-    text: "Chronique politique pour France 3 Bourgogne.", video: "videos/Chronique.mp4" },
+    text: "Villeurbanne est devenue la première commune de la Métropole de Lyon à imposer le port du casque obligatoire à trotinette.", video: "videos/Trotts.mp4" },
 ];
